@@ -40,6 +40,16 @@ const routesGerant = (express) => {
         .catch(err => res.status(500).json(err))
     })
 
+    router.delete('/:idGerant', (req, res) => {
+        Gerant.findByPk(req.body.idGerant)
+            .then(gerant => {
+                gerant.destroy()
+                    .then(() => res.status(200).json({gerant: gerant, message: "Gerant deleted !"}))
+                    .catch(err => res.status(404).json({message: "Gerant not deleted !"}))
+            })
+            .catch(err => res.status(404).json({message: "Gerant not found !"}))
+    })
+    
     return router;
 }
 

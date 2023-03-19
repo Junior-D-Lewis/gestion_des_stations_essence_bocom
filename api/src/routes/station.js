@@ -1,4 +1,4 @@
-const {Station, Essence} = require('../db_config/sequelize')
+const {Station, Essence, Avoir} = require('../db_config/sequelize')
 
 
 const routesLivraison = (express) => {
@@ -10,8 +10,38 @@ const routesLivraison = (express) => {
             .catch(err => res.status(404).json({message: "Station not created !"}))
     })
 
-    router.post('/', (req, res) => {
-        console.log(req.body)
+    router.get("/essences/:gerantID", (req, res) => {
+        console.log(req.params.gerantID)
+        Station.findAll(
+            {
+                where: {
+                    gerantID: req.params.gerantID
+                },
+                include: [
+                    {
+                        model: Essence,
+                        required: true,
+                        as: "essences",
+                        attributes: ["libEss", "prixEss"]
+                    },
+                ],
+                attributes: ["libStation"]        
+            }
+        )
+        .then(datas => res.status(200).json(datas))
+        .catch(err => {console.log(err)
+            res.status(404).json({message: "Essences not found !"})})
+    })
+
+    router.put("/:id", (req, res) => {
+        const id = req.params.id
+        Station.update(req.body, {
+            where: {
+                idStation: id,
+                }
+                })
+            .then(() => res.status(200).json({message: "Station updated !"}))
+            .catch(err => res.status(404).json({message: "Station not updated !"}))
     })
 
     return router;

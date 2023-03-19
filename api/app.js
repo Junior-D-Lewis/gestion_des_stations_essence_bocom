@@ -12,7 +12,7 @@ const routesFournisseur = require('./src/routes/fournisseur')
 
 const app=express();
 
-initDb()
+//initDb()
 
 app.use(cors())
     .use(morgan('dev'))
