@@ -7,11 +7,15 @@ module.exports = (sequelize, DataTypes) => {
         statut: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        station: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
     },
     {
         timestamps: true,
         createdAt: 'dateLivr',
-        updatedAt: false
+        updatedAt: 'dateLivr'
     })
 }

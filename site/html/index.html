@@ -19,7 +19,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">connected to you as an administrator </h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">connected to you as an Administrateur </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -55,7 +55,8 @@
           </div>
         
           <!-- Submit button -->
-          <button type="button" class="btn btn-primary btn-block mb-4">connxion</button>
+          <button type="button" class="btn btn-primary btn-block mb-4" 
+          onclick="admin_login()">connxion</button>
         
            
         </form>
@@ -70,7 +71,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">connected to you as a driver</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">connected to you as a  Gérant</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -106,7 +107,8 @@
           </div>
         
           <!-- Submit button -->
-          <button type="button" class="btn btn-primary btn-block mb-4">connxion</button>
+          <button type="button" class="btn btn-primary btn-block mb-4" 
+          onclick="gerant_login()">connxion</button>
         
            
         </form>
@@ -131,9 +133,9 @@
 
                   <div class="d-grid gap-2">
                    
-                    <label for="exampleInputEmail1" class="form-label">administrator</label>
+                    <label for="exampleInputEmail1" class="form-label">Administrateur</label>
                     <button  class="btn btn-outline-info" type="button" data-bs-toggle="modal" data-bs-target="#admin">Button</button>
-                    <label for="exampleInputPassword1" class="form-label">driver</label>
+                    <label for="exampleInputPassword1" class="form-label"> Gérant</label>
                     <button  class="btn btn-outline-info" type="button" data-bs-toggle="modal" data-bs-target="#chauffeur">Button</button>
                    
                 </div>
@@ -153,6 +155,6 @@
           </div>
         </div>
       </section>
-     
+     <script src="../js/index.js"></script>
 </body>
 </html>

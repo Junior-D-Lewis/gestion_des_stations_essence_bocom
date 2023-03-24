@@ -1,4 +1,4 @@
-const {Station, Essence, Avoir} = require('../db_config/sequelize')
+const {Station, Essence, Gerant} = require('../db_config/sequelize')
 
 
 const routesLivraison = (express) => {
@@ -8,6 +8,25 @@ const routesLivraison = (express) => {
         Station.create(req.body)
             .then(stations => res.status(200).json(stations))
             .catch(err => res.status(404).json({message: "Station not created !"}))
+    })
+
+    router.get("/", (req, res) => {
+        Station.findAll(
+            {
+                include: [
+                    {
+                        model: Gerant,
+                        required: true,
+                        as: "gerant",
+                        attributes: ["nomGrt", "telGrt", "emailGrt"]
+                    },
+                ],
+                attributes: ["libStation"]        
+            }
+        )
+        .then(datas => res.status(200).json(datas))
+        .catch(err => {console.log(err)
+            res.status(404).json({message: "Essences not found !"})})
     })
 
     router.get("/essences/:gerantID", (req, res) => {

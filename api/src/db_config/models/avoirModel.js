@@ -9,5 +9,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true,
         createdAt: false,
         updatedAt: false
-    })
+    }) 
 }

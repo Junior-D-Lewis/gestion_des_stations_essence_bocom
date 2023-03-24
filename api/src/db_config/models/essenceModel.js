@@ -13,10 +13,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING, 
             allowNull: false
         },
-        qteEss: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         prixEss: {
             type: DataTypes.FLOAT,
             allowNull: false

@@ -11,6 +11,12 @@ const routesLivraison = (express) => {
             .catch(err => res.status(404).json({message: "Fournisseur not created !"}))
     })
 
+    router.get('/', (req, res) => {
+        Fournisseur.findAll()
+            .then(datas => res.status(200).json(datas))
+            .catch(err => res.status(404).json({message: "Fournisseurs not found !"}))
+    })
+
     router.delete('/:idFournisseur', (req, res) => {
         Fournisseur.findByPk(req.body.idFournisseur)
             .then(fournisseur => {

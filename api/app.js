@@ -12,7 +12,7 @@ const routesFournisseur = require('./src/routes/fournisseur')
 
 const app=express();
 
-//initDb()
+initDb()
 
 app.use(cors())
     .use(morgan('dev'))
@@ -20,7 +20,7 @@ app.use(cors())
     .use(bodyParser.json())
     .use(express.json())
     .use(express.urlencoded({ extended: false })) 
-    .use(express.static(path.resolve('site')))
+    .use(express.static(path.resolve('site/html')))
 
 app.use('/api/gerant', routesGerant(express))
 app.use('/api/livraison', routesLivraison(express))
@@ -28,7 +28,6 @@ app.use('/api/station', routesStation(express))
 app.use('/api/fournisseur', routesFournisseur(express))
 
 app.get('/', (req, res) => {
-    res.sendFile('/index.html')
+    res.status(200).json({message: "API is running !"})
 })
-
 module.exports=app;

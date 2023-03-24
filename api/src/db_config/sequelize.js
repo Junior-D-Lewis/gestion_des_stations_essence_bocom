@@ -14,7 +14,7 @@ sequelize.authenticate()
 
 
 const initDb = async () => {
-    sequelize.sync()
+    sequelize.sync({ force: true })
         .then(() => { 
             console.log('Database has been successfully synchronized.')
             essences.map(essence => Essence.create(essence))

@@ -13,11 +13,11 @@ const Station = StationModel(sequelize, DataTypes)
 const Fournisseur = FournisseurModel(sequelize, DataTypes)
 const Livrer = LivrerModel(sequelize, DataTypes)
 const Avoir = avoirModel(sequelize, DataTypes)
-
+ 
 Gerant.hasMany(Station, {foreignKey: 'gerantID', targetKey: 'idGrt'})
 Station.belongsTo(Gerant, {foreignKey: 'gerantID', targetKey: 'idGrt'})
 
-Fournisseur.belongsToMany(Essence, {through: Livrer, foreignKey: 'fournisseur'})
+Fournisseur.belongsToMany(Essence, {through: Livrer, foreignKey: 'fournisseur'})    
 Essence.belongsToMany(Fournisseur, {through: Livrer, foreignKey: 'essence'})
 
 Station.belongsToMany(Essence, {through: Avoir, foreignKey: 'station'}) 
